@@ -700,7 +700,7 @@ function greetUserText(userId) {
 				console.log("FB user: %s %s, %s",
 					user.first_name, user.last_name, user.gender);
 
-				sendTextMessage(userId, "Welcome " + user.first_name + '!');
+				sendTextMessage(userId, "Welcome to CVbot, " + user.first_name + '!');
 			} else {
 				console.log("Cannot get data for fb user with id",
 					userId);
@@ -773,6 +773,9 @@ function receivedPostback(event) {
 	console.log("Received postback for user %d and page %d with payload '%s' " +
 		"at %d", senderID, recipientID, payload, timeOfPostback);
 
+	if (payload === "home") {
+		sendTextMessage(senderID, "I'm not sure what you want. Can you be more specific?");	
+	}
 }
 
 
