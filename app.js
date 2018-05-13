@@ -777,15 +777,17 @@ function receivedPostback(event) {
 			//unindentified payload
 			sendTextMessage(senderID, "I'm not sure what you want. Can you be more specific?");
 			break;
+	}
 
+	switch (payload) {
+		case "home":
+		sendTextMessage(senderID, "Hey Louis, you have tapped the home button, this is the postback");
+		break;
 	}
 
 	console.log("Received postback for user %d and page %d with payload '%s' " +
 		"at %d", senderID, recipientID, payload, timeOfPostback);
 
-	if (payload === "home") {
-		sendTextMessage(senderID, "Hey Louis, you have clicked on Home");	
-	}
 }
 
 
