@@ -203,6 +203,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			sendTextMessage(sender, responseText);
 
 		break;
+
 		case "cv-start":
 			let replies = [
 				{
@@ -229,6 +230,15 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 		default:
 			//unhandled action, just send back the text
 			sendTextMessage(sender, responseText);
+	}
+
+	switch (event.message.text) {
+		case 'home':
+			let buttonPostback =  messagingEvent.postback;
+			event.message.text = buttonPostback;
+			
+			sendTextMessage(sender, responseText);
+
 	}
 }
 
