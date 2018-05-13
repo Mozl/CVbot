@@ -790,16 +790,13 @@ function receivedPostback(event) {
 	var payload = event.postback.payload;
 
 	switch (payload) {
+		case 'CHAT':
+			sendTextMessage(senderID, "This postback was successful, well done!");
+				break;
 		default:
 			//unindentified payload
 			sendTextMessage(senderID, "That has triggered the default case in receivedPostback");
 			break;
-	}
-
-	switch (payload) {
-		case "home":
-		sendTextMessage(senderID, "Hey Louis, you have tapped the home button, this is the postback");
-		break;
 	}
 
 	console.log("Received postback for user %d and page %d with payload '%s' " +
