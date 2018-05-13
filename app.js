@@ -190,6 +190,23 @@ function handleEcho(messageId, appId, metadata) {
 
 function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 	switch (action) {
+		case 'postback.test':
+				sendTextMessage(sender, responseText);
+				sendTypingOn(sender);
+				
+				setTimeout(function() {
+					let buttons = [
+						{
+							type:"postback",
+							title:"Keep on chatting",
+							payload:"CHAT"
+						}
+					];
+
+
+					sendButtonMessage(sender, "This is the button for the postback", buttons);
+				}, 3000);
+			break;
 		case 'detailed-experience':
 			if (isDefined(contexts[0]) && contexts[0].name == 'experience-details' && contexts[0].parameters) {
 				let user_name = (isDefined(contexts[0].parameters['user-name']) && contexts[0].parameters['user-name'] != '') ? contexts[0].parameters['user-name'] : '';
