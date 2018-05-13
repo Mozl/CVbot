@@ -237,7 +237,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			let buttonPostback =  messagingEvent.postback;
 			event.message.text = buttonPostback;
 			
-			sendTextMessage(sender, responseText);
+			sendToApiAi(senderID, messageText);
 
 	}
 }
@@ -784,7 +784,7 @@ function receivedPostback(event) {
 		"at %d", senderID, recipientID, payload, timeOfPostback);
 
 	if (payload === "home") {
-		sendTextMessage(senderID, "I'm not sure what you want. Can you be more specific?");	
+		sendTextMessage(senderID, "Hey Louis, you have clicked on Home");	
 	}
 }
 
